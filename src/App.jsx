@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 const App = () => {
+  axios.get('http://localhost:5000/techs').then(data => console.log(data.data));
   return (
     <div className='App'>
       <header className='App-header'>
