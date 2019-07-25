@@ -7,9 +7,9 @@ import { getLogs } from '../../actions/logActions';
 import Preloader from '../layout/Preloader';
 import LogItem from './LogItem';
 
-const Logs = ({ log: { logs, loading }, fetchLogs }) => {
+const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
-    fetchLogs();
+    getLogs();
     // eslint-disable-next-line
   }, []);
 
@@ -41,20 +41,15 @@ const Logs = ({ log: { logs, loading }, fetchLogs }) => {
 };
 
 Logs.propTypes = {
-  log: PropTypes.object.isRequired
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   log: state.log
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchLogs() {
-    dispatch(getLogs());
-  }
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getLogs }
 )(memo(Logs));
