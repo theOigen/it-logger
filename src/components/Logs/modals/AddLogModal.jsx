@@ -12,6 +12,10 @@ const AddLogModal = () => {
     } else {
       e.preventDefault();
       console.log(message, tech, attention);
+
+      setMessage('');
+      setTech('');
+      setAttention(false);
     }
   };
 
