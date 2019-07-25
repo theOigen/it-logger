@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addTech } from '../../../actions/techActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddTechModal = () => {
+const AddTechModal = ({ addTech }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   const onSubmit = e => {
+    e.preventDefault();
     if (firstName === '' || lastName === '') {
       M.toast({ html: 'Please enter the first and last name' });
     } else {
-      e.preventDefault();
-      console.log(firstName, lastName);
+      addTech({
+        firstName,
+        lastName
+      });
+
+      M.toast({ html: `Technician ${firstName} ${lastName} was added` });
 
       setFirstName('');
       setLastName('');
@@ -61,4 +69,11 @@ const AddTechModal = () => {
   );
 };
 
-export default AddTechModal;
+AddTechModal.propTypes = {
+  addTech: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addTech }
+)(AddTechModal);

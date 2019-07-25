@@ -15,26 +15,35 @@
       "date": "2019-07-25T21:10:30.271Z"
     },
     {
-      "message": "Kaef",
+      "id": 6,
+      "message": "fixed=)",
       "attention": false,
       "tech": "John Doe",
-      "date": "2019-07-25T20:44:53.906Z",
-      "id": 5
+      "date": "2019-07-25T22:02:20.430Z"
     },
     {
-      "id": 6,
-      "message": "ATTENTION!!!!",
+      "message": "Playing bass!!!",
       "attention": true,
-      "tech": "John Doe",
-      "date": "2019-07-25T21:08:12.478Z"
+      "tech": "Eugene Zayats",
+      "date": "2019-07-25T22:02:46.599Z",
+      "id": 7
+    },
+    {
+      "message": "Playing drums.",
+      "attention": false,
+      "tech": "Andrew Dorofeev",
+      "date": "2019-07-25T22:02:57.929Z",
+      "id": 8
+    },
+    {
+      "message": "Playing guitar =(",
+      "attention": false,
+      "tech": "Yury Brusentsov",
+      "date": "2019-07-25T22:03:08.815Z",
+      "id": 9
     }
   ],
   "techs": [
-    {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe"
-    },
     {
       "id": 2,
       "firstName": "Sam",
@@ -44,6 +53,21 @@
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "firstName": "Eugene",
+      "lastName": "Zayats",
+      "id": 4
+    },
+    {
+      "firstName": "Yury",
+      "lastName": "Brusentsov",
+      "id": 5
+    },
+    {
+      "firstName": "Andrew",
+      "lastName": "Dorofeev",
+      "id": 6
     }
   ]
 }
