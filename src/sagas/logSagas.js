@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeEvery, call, all } from 'redux-saga/effects';
+import { put, takeEvery, call } from 'redux-saga/effects';
 
 import {
   addLogSuccess,
@@ -9,26 +9,6 @@ import {
   searchLogsSuccess,
   requestError
 } from '../actions/logActions';
-
-function* addLogWatcher() {
-  yield takeEvery('REQUEST_ADD_LOG', addLog);
-}
-
-function* fetchLogsWatcher() {
-  yield takeEvery('REQUEST_LOGS', fetchLogs);
-}
-
-function* updateLogWatcher() {
-  yield takeEvery('REQUEST_UPDATE_LOG', updateLog);
-}
-
-function* deleteLogWatcher() {
-  yield takeEvery('REQUEST_DELETE_LOG', deleteLog);
-}
-
-function* searchLogsWatcher() {
-  yield takeEvery('REQUEST_SEARCH_LOGS', searchLogs);
-}
 
 function* addLog({ log }) {
   try {
@@ -85,11 +65,9 @@ function* searchLogs({ text }) {
 }
 
 export default function* rootSaga() {
-  yield all([
-    addLogWatcher(),
-    fetchLogsWatcher(),
-    updateLogWatcher(),
-    deleteLogWatcher(),
-    searchLogsWatcher()
-  ]);
+  yield takeEvery('REQUEST_ADD_LOG', addLog);
+  yield takeEvery('REQUEST_LOGS', fetchLogs);
+  yield takeEvery('REQUEST_UPDATE_LOG', updateLog);
+  yield takeEvery('REQUEST_DELETE_LOG', deleteLog);
+  yield takeEvery('REQUEST_SEARCH_LOGS', searchLogs);
 }

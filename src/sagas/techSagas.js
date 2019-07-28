@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeEvery, call, all } from 'redux-saga/effects';
+import { put, takeEvery, call } from 'redux-saga/effects';
 
 import {
   addTechSuccess,
@@ -7,18 +7,6 @@ import {
   deleteTechSuccess,
   requestError
 } from '../actions/techActions';
-
-function* addTechWatcher() {
-  yield takeEvery('REQUEST_ADD_TECH', addTech);
-}
-
-function* fetchTechsWatcher() {
-  yield takeEvery('REQUEST_TECHS', fetchTechs);
-}
-
-function* deleteTechWatcher() {
-  yield takeEvery('REQUEST_DELETE_TECH', deleteTech);
-}
 
 function* addTech({ tech }) {
   try {
@@ -53,5 +41,7 @@ function* deleteTech({ id }) {
 }
 
 export default function* rootSaga() {
-  yield all([addTechWatcher(), fetchTechsWatcher(), deleteTechWatcher()]);
+  yield takeEvery('REQUEST_ADD_TECH', addTech);
+  yield takeEvery('REQUEST_TECHS', fetchTechs);
+  yield takeEvery('REQUEST_DELETE_TECH', deleteTech);
 }
