@@ -2,11 +2,11 @@ import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getTechs } from '../../actions/techActions';
+import { requestTechs } from '../../actions/techActions';
 
-const TechSelectOptions = ({ getTechs, tech: { techs, loading } }) => {
+const TechSelectOptions = ({ techState: { techs, loading }, requestTechs }) => {
   useEffect(() => {
-    getTechs();
+    requestTechs();
     // eslint-disable-next-line
   }, []);
 
@@ -22,15 +22,19 @@ const TechSelectOptions = ({ getTechs, tech: { techs, loading } }) => {
 };
 
 TechSelectOptions.propTypes = {
-  getTechs: PropTypes.func.isRequired,
-  tech: PropTypes.object.isRequired
+  requestTechs: PropTypes.func.isRequired,
+  techState: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  tech: state.tech
+  techState: state.techState
 });
+
+const mapDispatchToProps = {
+  requestTechs
+};
 
 export default connect(
   mapStateToProps,
-  { getTechs }
+  mapDispatchToProps
 )(memo(TechSelectOptions));

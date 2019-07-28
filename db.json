@@ -1,13 +1,6 @@
 {
   "logs": [
     {
-      "message": "Hard drive failed at workstation 002",
-      "attention": true,
-      "tech": "Sara Wilson",
-      "date": "2019-07-25T20:29:24.650Z",
-      "id": 2
-    },
-    {
       "id": 4,
       "message": "Che",
       "attention": false,
@@ -34,13 +27,6 @@
       "tech": "Andrew Dorofeev",
       "date": "2019-07-25T22:02:57.929Z",
       "id": 8
-    },
-    {
-      "message": "Playing guitar =(",
-      "attention": false,
-      "tech": "Yury Brusentsov",
-      "date": "2019-07-25T22:03:08.815Z",
-      "id": 9
     }
   ],
   "techs": [
@@ -48,11 +34,6 @@
       "id": 2,
       "firstName": "Sam",
       "lastName": "Smith"
-    },
-    {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
     },
     {
       "firstName": "Eugene",

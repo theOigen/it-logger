@@ -30,7 +30,11 @@ TechItem.propTypes = {
   deleteTech: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = {
+  deleteTech
+};
+
 export default connect(
   null,
-  { deleteTech }
+  mapDispatchToProps
 )(TechItem);

@@ -1,9 +1,11 @@
 import {
-  GET_TECHS,
-  TECHS_ERROR,
-  ADD_TECH,
-  DELETE_TECH,
-  SET_TECH_LOADING
+  REQUEST_ADD_TECH,
+  REQUEST_TECHS,
+  REQUEST_DELETE_TECH,
+  ADD_TECH_SUCCESS,
+  RECEIVE_TECHS,
+  DELETE_TECH_SUCCESS,
+  TECHS_ERROR
 } from '../actions/types';
 
 const initialState = {
@@ -14,19 +16,19 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_TECHS:
+    case RECEIVE_TECHS:
       return {
         ...state,
         techs: payload,
         loading: false
       };
-    case ADD_TECH:
+    case ADD_TECH_SUCCESS:
       return {
         ...state,
         techs: [...state.techs, payload],
         loading: false
       };
-    case DELETE_TECH:
+    case DELETE_TECH_SUCCESS:
       return {
         ...state,
         techs: state.techs.filter(tech => tech.id !== payload),
@@ -39,7 +41,9 @@ export default (state = initialState, { type, payload }) => {
         error: payload,
         loading: false
       };
-    case SET_TECH_LOADING:
+    case REQUEST_TECHS:
+    case REQUEST_ADD_TECH:
+    case REQUEST_DELETE_TECH:
       return {
         ...state,
         loading: true

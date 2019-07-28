@@ -38,7 +38,11 @@ SearchBar.propTypes = {
   searchLogs: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = {
+  searchLogs
+};
+
 export default connect(
   null,
-  { searchLogs }
+  mapDispatchToProps
 )(SearchBar);

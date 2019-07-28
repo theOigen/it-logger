@@ -19,6 +19,7 @@ const App = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
+
   return (
     <Provider store={store}>
       <>

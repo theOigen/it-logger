@@ -1,13 +1,17 @@
 import {
-  GET_LOGS,
-  SET_LOADING,
-  LOGS_ERROR,
-  ADD_LOG,
-  DELETE_LOG,
-  UPDATE_LOG,
+  REQUEST_ADD_LOG,
+  REQUEST_LOGS,
+  REQUEST_UPDATE_LOG,
+  REQUEST_DELETE_LOG,
+  REQUEST_SEARCH_LOGS,
+  ADD_LOG_SUCCESS,
+  RECEIVE_LOGS,
+  UPDATE_LOG_SUCCESS,
+  DELETE_LOG_SUCCESS,
+  SEARCH_LOGS_SUCCESS,
   SET_CURRENT,
   CLEAR_CURRENT,
-  SEARCH_LOGS
+  LOGS_ERROR
 } from '../actions/types';
 
 const initialState = {
@@ -19,31 +23,31 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_LOGS:
+    case RECEIVE_LOGS:
       return {
         ...state,
         logs: payload,
         loading: false
       };
-    case ADD_LOG:
+    case ADD_LOG_SUCCESS:
       return {
         ...state,
         logs: [...state.logs, payload],
         loading: false
       };
-    case DELETE_LOG:
+    case DELETE_LOG_SUCCESS:
       return {
         ...state,
         logs: state.logs.filter(log => log.id !== payload),
         loading: false
       };
-    case UPDATE_LOG:
+    case UPDATE_LOG_SUCCESS:
       return {
         ...state,
         logs: state.logs.map(log => (log.id === payload.id ? payload : log)),
         loading: false
       };
-    case SEARCH_LOGS:
+    case SEARCH_LOGS_SUCCESS:
       return {
         ...state,
         logs: payload,
@@ -55,7 +59,11 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         current: payload
       };
-    case SET_LOADING:
+    case REQUEST_ADD_LOG:
+    case REQUEST_LOGS:
+    case REQUEST_UPDATE_LOG:
+    case REQUEST_DELETE_LOG:
+    case REQUEST_SEARCH_LOGS:
       return {
         ...state,
         loading: true

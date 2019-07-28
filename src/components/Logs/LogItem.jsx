@@ -50,7 +50,12 @@ LogItem.propTypes = {
   setCurrent: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = {
+  deleteLog,
+  setCurrent
+};
+
 export default connect(
   null,
-  { deleteLog, setCurrent }
+  mapDispatchToProps
 )(memo(LogItem));

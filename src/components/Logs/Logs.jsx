@@ -2,14 +2,14 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getLogs } from '../../actions/logActions';
+import { requestLogs } from '../../actions/logActions';
 
 import Preloader from '../layout/Preloader';
 import LogItem from './LogItem';
 
-const Logs = ({ log: { logs, loading }, getLogs }) => {
+const Logs = ({ logState: { logs, loading }, requestLogs }) => {
   useEffect(() => {
-    getLogs();
+    requestLogs();
     // eslint-disable-next-line
   }, []);
 
@@ -41,15 +41,19 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
 };
 
 Logs.propTypes = {
-  log: PropTypes.object.isRequired,
-  getLogs: PropTypes.func.isRequired
+  logState: PropTypes.object.isRequired,
+  requestLogs: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  log: state.log
+  logState: state.logState
 });
+
+const mapDispatchToProps = {
+  requestLogs
+};
 
 export default connect(
   mapStateToProps,
-  { getLogs }
+  mapDispatchToProps
 )(memo(Logs));

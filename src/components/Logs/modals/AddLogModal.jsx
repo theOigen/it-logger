@@ -104,7 +104,11 @@ const modalStyle = {
   height: '75%'
 };
 
+const mapDispatchToProps = {
+  addLog
+};
+
 export default connect(
   null,
-  { addLog }
+  mapDispatchToProps
 )(AddLogModal);

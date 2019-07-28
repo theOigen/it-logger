@@ -1,70 +1,43 @@
 import {
-  GET_TECHS,
-  TECHS_ERROR,
-  ADD_TECH,
-  DELETE_TECH,
-  SET_TECH_LOADING
+  REQUEST_ADD_TECH,
+  REQUEST_TECHS,
+  REQUEST_DELETE_TECH,
+  ADD_TECH_SUCCESS,
+  RECEIVE_TECHS,
+  DELETE_TECH_SUCCESS,
+  TECHS_ERROR
 } from './types';
-import axios from 'axios';
 
-export const getTechs = () => async dispatch => {
-  try {
-    dispatch(setLoading());
+export const addTech = techToAdd => ({
+  type: REQUEST_ADD_TECH,
+  tech: techToAdd
+});
 
-    const res = await axios.get('/techs');
+export const requestTechs = () => ({
+  type: REQUEST_TECHS
+});
 
-    dispatch({
-      type: GET_TECHS,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: TECHS_ERROR,
-      payload: err.response.statusText
-    });
-  }
-};
+export const deleteTech = id => ({
+  type: REQUEST_DELETE_TECH,
+  id
+});
 
-export const addTech = tech => async dispatch => {
-  try {
-    dispatch(setLoading());
+export const addTechSuccess = log => ({
+  type: ADD_TECH_SUCCESS,
+  payload: log
+});
 
-    const res = await axios.post('/techs', tech, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+export const requestTechsSuccess = data => ({
+  type: RECEIVE_TECHS,
+  payload: data
+});
 
-    dispatch({
-      type: ADD_TECH,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: TECHS_ERROR,
-      payload: err.response.statusText
-    });
-  }
-};
+export const deleteTechSuccess = id => ({
+  type: DELETE_TECH_SUCCESS,
+  payload: id
+});
 
-export const deleteTech = id => async dispatch => {
-  try {
-    dispatch(setLoading());
-
-    await axios.delete(`/techs/${id}`);
-
-    dispatch({
-      type: DELETE_TECH,
-      payload: id
-    });
-  } catch (err) {
-    dispatch({
-      type: TECHS_ERROR,
-      payload: err.response.statusText
-    });
-  }
-};
-
-export const setLoading = () => {
-  return {
-    type: SET_TECH_LOADING
-  };
-};
+export const requestError = error => ({
+  type: TECHS_ERROR,
+  payload: error
+});

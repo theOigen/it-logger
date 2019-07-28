@@ -111,10 +111,14 @@ EditLogModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  current: state.log.current
+  current: state.logState.current
 });
+
+const mapDispatchToProps = {
+  updateLog
+};
 
 export default connect(
   mapStateToProps,
-  { updateLog }
+  mapDispatchToProps
 )(EditLogModal);

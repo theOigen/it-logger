@@ -73,7 +73,11 @@ AddTechModal.propTypes = {
   addTech: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = {
+  addTech
+};
+
 export default connect(
   null,
-  { addTech }
+  mapDispatchToProps
 )(AddTechModal);
