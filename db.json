@@ -1,13 +1,6 @@
 {
   "logs": [
     {
-      "id": 4,
-      "message": "Che",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2019-07-25T21:10:30.271Z"
-    },
-    {
       "id": 6,
       "message": "fixed=)",
       "attention": false,
@@ -27,6 +20,13 @@
       "tech": "Andrew Dorofeev",
       "date": "2019-07-25T22:02:57.929Z",
       "id": 8
+    },
+    {
+      "message": "New log with saga =)",
+      "attention": false,
+      "tech": "Eugene Zayats",
+      "date": "2019-07-28T21:44:32.430Z",
+      "id": 9
     }
   ],
   "techs": [

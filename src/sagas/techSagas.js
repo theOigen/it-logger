@@ -22,11 +22,9 @@ function* deleteTechWatcher() {
 
 function* addTech({ tech }) {
   try {
-    const res = yield call(() =>
-      axios.post('/techs', tech, {
-        headers: { 'Content-Type': 'application/json' }
-      })
-    );
+    const res = yield call(axios.post, '/techs', tech, {
+      headers: { 'Content-Type': 'application/json' }
+    });
 
     yield put(addTechSuccess(res.data));
   } catch (err) {
@@ -36,7 +34,7 @@ function* addTech({ tech }) {
 
 function* fetchTechs() {
   try {
-    const res = yield call(() => axios.get('/techs'));
+    const res = yield call(axios.get, '/techs');
 
     yield put(requestTechsSuccess(res.data));
   } catch (err) {
@@ -46,7 +44,7 @@ function* fetchTechs() {
 
 function* deleteTech({ id }) {
   try {
-    yield call(() => axios.delete(`/techs/${id}`));
+    yield call(axios.delete, `/techs/${id}`);
 
     yield put(deleteTechSuccess(id));
   } catch (err) {

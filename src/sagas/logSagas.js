@@ -32,11 +32,9 @@ function* searchLogsWatcher() {
 
 function* addLog({ log }) {
   try {
-    const res = yield call(() =>
-      axios.post('/logs', log, {
-        headers: { 'Content-Type': 'application/json' }
-      })
-    );
+    const res = yield call(axios.post, '/logs', log, {
+      headers: { 'Content-Type': 'application/json' }
+    });
 
     yield put(addLogSuccess(res.data));
   } catch (err) {
@@ -46,7 +44,7 @@ function* addLog({ log }) {
 
 function* fetchLogs() {
   try {
-    const res = yield call(() => axios.get('/logs'));
+    const res = yield call(axios.get, '/logs');
 
     yield put(requestLogsSuccess(res.data));
   } catch (err) {
@@ -56,11 +54,9 @@ function* fetchLogs() {
 
 function* updateLog({ log }) {
   try {
-    const res = yield call(() =>
-      axios.put(`/logs/${log.id}`, log, {
-        headers: { 'Content-Type': 'application/json' }
-      })
-    );
+    const res = yield call(axios.put, `/logs/${log.id}`, log, {
+      headers: { 'Content-Type': 'application/json' }
+    });
 
     yield put(updateLogSuccess(res.data));
   } catch (err) {
@@ -70,7 +66,7 @@ function* updateLog({ log }) {
 
 function* deleteLog({ id }) {
   try {
-    yield call(() => axios.delete(`/logs/${id}`));
+    yield call(axios.delete, `/logs/${id}`);
 
     yield put(deleteLogSuccess(id));
   } catch (err) {
@@ -80,7 +76,7 @@ function* deleteLog({ id }) {
 
 function* searchLogs({ text }) {
   try {
-    const res = yield call(() => axios.get(`/logs?q=${text}`));
+    const res = yield call(axios.get, `/logs?q=${text}`);
 
     yield put(searchLogsSuccess(res.data));
   } catch (err) {
